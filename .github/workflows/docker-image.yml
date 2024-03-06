@@ -25,4 +25,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: luqmankendal54/test-cicd-to-vps-1:latest,luqmankendal54/test-cicd-to-vps-1:${{ steps.commit_id.outputs.COMMIT_ID }}
+          tags: test-cicd-to-vps-1:latest,test-cicd-to-vps-1:${{ steps.commit_id.outputs.COMMIT_ID }}
