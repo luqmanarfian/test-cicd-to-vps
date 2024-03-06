@@ -20,9 +20,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Get Commit ID
         id: commit_id
-        run: echo "::set-output name=COMMIT_ID::$(git rev-parse HEAD)" && echo "ini commit id ${{ steps.commit_id.outputs.COMMIT_ID }}"
+        run: echo "::set-output name=COMMIT_ID::$(git rev-parse HEAD)" && echo "ini commit id ${steps.commit_id.outputs.COMMIT_ID}"
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: luqmankendal54/test-cicd-to-vps-1:${{ steps.commit_id.outputs.COMMIT_ID }}
+          tags: luqmankendal54/test-cicd-to-vps-1:${{steps.commit_id.outputs.COMMIT_ID}}
