@@ -23,3 +23,15 @@ jobs:
         with:
           push: true
           tags: luqmankendal54/test-cicd-to-vps-1:latest ,luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
+
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
+          key: ${{secrets.PRIVATE_KEY}}
+          port: 22
+          script: |
+            cd ~/deployment/
+            docker pull luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
+            docker run -d -p 8080:80 --name test-cicd-to-vps-1 luqmankendal54/test-cicd-to-vps-1:latest
