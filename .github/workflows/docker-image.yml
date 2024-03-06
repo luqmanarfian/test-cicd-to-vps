@@ -34,6 +34,5 @@ jobs:
           script: |
             cd ~/deployment/
             docker pull luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
-            docker stop test-cicd-to-vps-1
-            docker rm test-cicd-to-vps-1
+            docker stop test-cicd-to-vps-1 && docker rm test-cicd-to-vps-1
             docker run -d -p 3000:80 --name test-cicd-to-vps-1 luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
