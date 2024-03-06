@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: luqmankendal54/test-cicd-to-vps:latest
+          tags: luqmankendal54/test-cicd-to-vps:${{GITHUB_SHA}}
