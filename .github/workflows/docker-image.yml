@@ -23,7 +23,9 @@ jobs:
         with:
           push: true
           tags: luqmankendal54/test-cicd-to-vps-1:latest ,luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
+      # # After you have successfully pushed Docker to Docker Hub, and you know the image ID, then you can continue with the CD steps to your VPS
 
+      # CD steps to your VPS
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
         with:
@@ -33,7 +35,7 @@ jobs:
           port: 22
           script: |
             cd ~/deployment/
-            docker stop test-cicd-to-vps-1 && docker rm test-cicd-to-vps-1
+            docker stop test-cicd-to-vps-1 && docker rm test-cicd-to-vps-1 || true
             docker rmi -f b2384f1ad730 || true
             docker pull luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
             docker run -d -p 3000:80 --name test-cicd-to-vps-1 luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
