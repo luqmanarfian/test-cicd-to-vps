@@ -34,4 +34,4 @@ jobs:
           script: |
             cd ~/deployment/
             docker pull luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
-            docker run -d -p 8080:80 --name test-cicd-to-vps-1 luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
+            docker run -d -p 3000:80 --name test-cicd-to-vps-1 luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
