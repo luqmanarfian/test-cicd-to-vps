@@ -36,6 +36,6 @@ jobs:
           script: |
             cd ~/deployment/
             docker stop test-cicd-to-vps-1 && docker rm test-cicd-to-vps-1 || true
-            docker images -a | grep "my_repository" | awk '{print $3}' | xargs docker rmi || true
+            docker rmi $(docker images -q -f "dangling=false" -f "reference=luqmankendal54/test-cicd-to-vps-1") || true
             docker pull luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
             docker run -d -p 3005:80 --name test-cicd-to-vps-1 luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
