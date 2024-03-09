@@ -34,7 +34,7 @@ jobs:
           key: ${{secrets.PRIVATE_KEY}}
           port: 22
           script: |
-            cd ~/deployment/
+            cd ~/deployment/test-nginx
             docker stop test-cicd-to-vps-1 && docker rm test-cicd-to-vps-1 || true
             docker rmi $(docker images -q -f "dangling=false" -f "reference=luqmankendal54/test-cicd-to-vps-1") || true
             docker pull luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
