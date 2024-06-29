@@ -35,11 +35,6 @@ jobs:
           port: 22
           script: |
             cd ~/deployment/test-nginx
-            echo "DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}" >> debug.txt
-            echo "DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}" >> debug.txt
-            echo "HOST: ${{secrets.HOST}}" >> debug.txt
-            echo "USERNAME: ${{secrets.USERNAME}}" >> debug.txt
-            echo "PRIVATE_KEY: ${{secrets.PRIVATE_KEY}}" >> debug.txt
             docker stop test-cicd-to-vps-1 && docker rm test-cicd-to-vps-1 || true
             docker rmi $(docker images -q -f "dangling=false" -f "reference=luqmankendal54/test-cicd-to-vps-1") || true
             docker pull luqmankendal54/test-cicd-to-vps-1:${{ github.sha }}
