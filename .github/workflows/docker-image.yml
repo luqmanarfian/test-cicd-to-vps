@@ -35,7 +35,7 @@ jobs:
           port: 22
           script: |
             cd ~/deployment/test-nginx
-            echo "DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }} >> debug.txt
+            echo "DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}" >> debug.txt
             echo "DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}" >> debug.txt
             echo "HOST: ${{secrets.HOST}}" >> debug.txt
             echo "USERNAME: ${{secrets.USERNAME}}" >> debug.txt
